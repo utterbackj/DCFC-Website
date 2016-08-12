@@ -1,0 +1,342 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCFC</title>
+    <link rel="shortcut icon" href="assets/img/dcfc-favicon.ico">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+  </head>
+  <body>
+
+    <!-- Sticky/Top bar -->
+    <div data-sticky-container>
+      <div data-sticky data-margin-top='0' style="width:100%">
+        <!-- Color borders -->
+        <div style="border-top: 6px solid green;">
+          <div style="border-bottom: 2px solid gray;">
+            <div class="title-bar" data-responsive-toggle="main-menu" hide-for-medium>
+              <button class="menu-icon" type="button" data-toggle></button>
+              <div class="title-bar-title">
+                <img src="assets/img/dcfc_logo_small.png"/>
+              </div>
+            </div>
+    
+            <!-- Top Bar (Navigation) -->
+            <div class="top-bar" id="main-menu" data-topbar>
+              <!-- Title -->
+              <div class="show-for-medium">
+              <ul class="top-bar-title">
+                <a href="#"><img src="assets/img/dcfc_logo_small.png"/></a>
+              </ul>
+              </div>
+              <!-- Menu Items -->
+              <ul class="top-bar-right">
+                <ul class="vertical medium-horizontal menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href='news.html'>News</a></li> 
+                <li class="active"><a href="#">Roster</a></li>
+                <li><a href='joinus.html'>Join</a></li>
+                <li><a href='practice.html'>Practice</a></li>
+                <li><a href='competition.html'>Competitions</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href='support.html'>Support</a></li>
+                <li><a href='faq.html'>FAQ</a></li>
+                </ul>
+              </ul>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Banner -->
+    <img src="assets/img/banner_roster.png"/>
+    
+    <!-- Main Content -->
+    <br><br>
+    <div class="row">
+      <div class="small-0 medium-1 columns">&nbsp</div>
+      <div class="small-12 medium-10 columns text-center">
+        <div class="callout"><h2><strong>Officers</strong></h2></div>
+      </div>
+      <div class="small-0 medium-1 columns">&nbsp</div>
+    </div>
+    
+    <div class="row">
+      <div class="small-0 medium-1 columns">&nbsp</div>
+      <div class="small-12 medium-5 columns">
+        <br>
+        <h3 class="text-justify"><br><strong>Co-Captain:</strong> Phoebe Liang '17<img style="float: right;" src="assets/img/roster/liangp.png" width="200" height="200"></h3>
+      </div>
+      <div class="small-12 medium-5 columns">
+        <br>
+        <h3 class="text-justify"><br><strong>Co-Captain:</strong> Lily Ma '17<img style="float: right;" src="assets/img/roster/mal.png" width="200" height="200"></h3>
+      </div>
+      <div class="small-0 medium-1 columns">&nbsp</div>
+    </div>
+    <div class="row">
+      <div class="small-0 medium-1 columns">&nbsp</div>
+      <div class="small-12 medium-5 columns">
+        <br>
+        <h3 style="clear: right"><br><strong>Secretary:</strong> Katherine Royce '19<img style="float: right;" src="assets/img/roster/roycek.jpg" width="200" height="200"></h3>
+      </div>
+      <div class="small-12 medium-5 columns">
+        <br>
+        <h3 style="clear: right"><br><strong>Treasurer:</strong> James Wen '19<img style="float: right;" src="assets/img/roster/wenj.jpg" width="200" height="200"></h3>
+      </div>
+      <div class="small-0 medium-1 columns">&nbsp</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-0 medium-1 columns">&nbsp</div>
+      <div class="small-12 medium-10 columns text-center">
+        <div class="callout"><h2><strong>Coach</strong></h2></div>
+        <br>
+        <h3>Scott Brookes '14 &nbsp &nbsp &nbsp<img src="assets/img/roster/brookess.png" width="200" height="200"></h3>
+        <br>
+      </div>
+      <div class="small-0 medium-1 columns">&nbsp</div>
+    </div>
+    <br>
+    
+    <div class="row">
+      <div class="small-0 medium-1 columns">&nbsp</div>
+      <div class="small-12 medium-10 columns text-center">
+        <br>
+        <div class="callout"><h2><strong>Team Members</strong></h2></div>
+        <br>
+      </div>
+      <div class="small-0 medium-1 columns">&nbsp</div>
+    </div>
+    
+    <div class="row" id="roster"></div>
+    
+    <script type="text/babel">
+      var whiteStyle = {
+        color: "white"
+      }
+    
+      var Filters = React.createClass({
+        yearChange: function(e) {
+          var value = e.target.value;
+          this.props.yearUpdate(value);
+        },
+    
+        weaponChange: function(e) {
+          var value = e.target.value;
+          this.props.weaponUpdate(value);
+        },
+    
+        genderChange: function(e) {
+          var value = e.target.value;
+          this.props.genderUpdate(value);
+        },
+    
+        leaderChange: function(e) {
+          var checked = e.target.checked;
+          this.props.leaderUpdate(checked);
+        },
+    
+        render: function() {
+          return (
+            <form>
+              <div className="row">
+              <div className="small-6 medium-3 columns">
+                <h5><strong style={whiteStyle}>Year:</strong><select onChange={this.yearChange}> <option value="all">All</option> <option value="2017">2017</option> <option value="2018">2018</option> <option value="2019">2019</option> <option value="2020">2020</option> </select></h5>
+              </div>
+              <div className="small-6 medium-3 columns">
+                <h5><strong style={whiteStyle}>Weapon:</strong><select onChange={this.weaponChange}> <option value="all">All</option> <option value="Foil">Foil</option> <option value="Epee">Epee</option> <option value="Sabre">Sabre</option> </select></h5>
+              </div>
+              <div className="small-6 medium-3 columns">
+                <h5><strong style={whiteStyle}>Gender:</strong><select onChange={this.genderChange}> <option value="all">All</option> <option value="female">Women</option> <option value="male">Men</option> </select></h5>
+              </div>
+              <div className="small-6 medium-3 columns">
+                <h5><strong style={whiteStyle}>Squad Leaders: </strong></h5><input type="checkbox" onChange={this.leaderChange}/>
+              </div>
+              </div>
+            </form>
+          );
+        }
+      });
+    
+      var profileStyle = {
+        height: "300px",
+        width: "300px"
+      }
+    
+      var Member = React.createClass({
+        render: function() {
+          return (
+            <div className="column">
+              <div className="callout text-center">
+                <h3>{this.props.name}</h3>
+                <br />
+                <img src={"assets/img/roster/" + this.props.picture} alt={this.props.name} style={profileStyle}/>
+                <h4><i>{this.props.weapon}</i></h4>
+                <p><b>Class: </b>{this.props.year}</p>
+                <p><b>Major/Minor: </b>{this.props.major}</p>
+                <p><b>Hobbies: </b>{this.props.hobbies}</p>
+                <p><b>Fun Fact: </b>{this.props.funfact}</p>
+              </div>
+            </div>
+          );
+        }
+      });
+    
+      var WeaponHeader = React.createClass({
+          render: function() {
+            return (
+              <div>
+                <br/>
+                <h1 className="text-center">{this.props.title}</h1>
+                <br/>
+              </div>
+            );
+          }
+      });
+    
+      var TeamList = React.createClass({
+        render: function() {
+          var foils = [];
+          var epees = [];
+          var sabres = [];
+          var foilheader = [];
+          var epeeheader = [];
+          var sabreheader = [];
+          var showfoil = 0;
+          var showepee = 0;
+          var showsabre = 0;
+          this.props.data.forEach(function(member) {
+            if (!member.active) {
+              return;
+            }
+            if (this.props.filterYear != "all" && this.props.filterYear != member.year) {
+              return;
+            }
+            if (this.props.filterWeapon != "all" && this.props.filterWeapon != member.weapon) {
+              return;
+            }
+            if (this.props.filterGender != "all" && this.props.filterGender != member.gender) {
+              return;
+            }
+            if (this.props.filterLeader && !member.squadleader) {
+              return;
+            }
+    
+            if (member.weapon == "Foil") {
+              if (showfoil == 0) {
+                foilheader.push(<WeaponHeader title="Foil" />);
+              }
+              showfoil = 1;
+              foils.push(<Member name={member.name} picture={member.picture} weapon={member.weapon} year={member.year} major={member.major} hobbies={member.hobbies} funfact={member.funfact} />);
+            }
+            if (member.weapon == "Epee") {
+              if (showepee == 0) {
+                epeeheader.push(<WeaponHeader title="Epee" />);
+              }
+              showepee = 1;
+              epees.push(<Member name={member.name} picture={member.picture} weapon={member.weapon} year={member.year} major={member.major} hobbies={member.hobbies} funfact={member.funfact} />);
+            }
+            if (member.weapon == "Sabre") {
+              if (showsabre == 0) {
+                sabreheader.push(<WeaponHeader title="Sabre" />);
+              }
+              showsabre = 1;
+              sabres.push(<Member name={member.name} picture={member.picture} weapon={member.weapon} year={member.year} major={member.major} hobbies={member.hobbies} funfact={member.funfact} />);
+            }
+          }.bind(this));
+    
+          return (
+            <div className="teamList">
+              {foilheader}
+              <div className="row small-up-1 medium-up-2 large-up-3">
+                {foils}
+              </div>
+              {epeeheader}
+              <div className="row small-up-1 medium-up-2 large-up-3">
+                {epees}
+              </div>
+              {sabreheader}
+              <div className="row small-up-1 medium-up-2 large-up-3">
+                {sabres}
+              </div>
+            </div>
+          );
+        }
+      });
+        
+      var TeamRoster = React.createClass({
+        getInitialState: function() {
+          return {
+            filterText: "",
+            filterYear: "all",
+            filterWeapon: "all",
+            filterGender: "all",
+            filterLeader: false
+          };
+        },
+    
+        render: function() {
+          return (
+            <div>
+              <div className="row">
+                <div className="small-0 medium-2 columns"><p></p></div>
+                <div className="small-12 medium-8 columns text-center">
+                  <div className="callout primary">
+                    <Filters
+                      weaponUpdate={this.weaponUpdate}
+                      yearUpdate={this.yearUpdate}
+                      genderUpdate={this.genderUpdate}
+                      leaderUpdate={this.leaderUpdate}
+                    />
+                  </div>
+                </div>
+                <div className="small-0 medium-2 columns"><p></p></div>
+              </div>
+              <br/>
+              <TeamList
+                data={this.props.data}
+                filterYear={this.state.filterYear}
+                filterWeapon={this.state.filterWeapon}
+                filterGender={this.state.filterGender}
+                filterLeader={this.state.filterLeader}
+              />
+            </div>
+          );
+        },
+    
+        yearUpdate: function(val) {
+          this.setState({filterYear:val});
+        },
+    
+        weaponUpdate: function(val) {
+          this.setState({filterWeapon:val});
+        },
+    
+        genderUpdate: function(val) {
+          this.setState({filterGender:val});
+        },
+    
+        leaderUpdate: function(checked) {
+          this.setState({filterLeader:checked});
+        }
+      });
+    
+      ReactDOM.render(
+        <TeamRoster data={roster} />,
+        document.getElementById('roster')
+      );
+    </script>
+    
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
