@@ -1,0 +1,116 @@
+---
+layout: article
+---
+<!-- Sticky/Top bar -->
+<div data-sticky-container>
+  <div data-sticky data-margin-top='0' style="width:100%" data-options="stickyOn:small">
+    <!-- Color borders -->
+    <div style="border-top: 6px solid green;">
+      <div style="border-bottom: 2px solid gray;">
+        <div class="title-bar" data-responsive-toggle="main-menu" hide-for-medium>
+          <button class="menu-icon" type="button" data-toggle></button>
+          <div class="title-bar-title">
+            <img src="assets/img/dcfc_logo_small.png"/>
+          </div>
+        </div>
+
+        <!-- Top Bar (Navigation) -->
+        <div class="top-bar" id="main-menu" data-topbar>
+          <!-- Title -->
+          <div class="show-for-medium">
+          <ul class="top-bar-title">
+            <a href="#"><img src="assets/img/dcfc_logo_small.png"/></a>
+          </ul>
+          </div>
+          <!-- Menu Items -->
+          <ul class="top-bar-right">
+            <ul class="vertical medium-horizontal menu">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href='news.html'>News</a></li>
+            <li><a href="roster.html">Roster</a></li>
+            <li><a href='joinus.html'>Join</a></li>
+            <li><a href='practice.html'>Practice</a></li>
+            <li><a href='competition.html'>Competitions</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href='support.html'>Support</a></li>
+            <li><a href='faq.html'>FAQ</a></li>
+            </ul>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Banner -->
+<p style="text-align:center"><img src="assets/img/banner_news.png"/></p>
+
+<!-- Main Content -->
+<div class="row">
+  <div class="small-0 medium-1 columns">&nbsp</div>
+  <div class="small-12 medium-10 columns">
+    <br>
+    <div class="row text-center" id="article"></div>
+    <!-- Add some footer space to the article -->
+    <br><br><br><br><br>
+  </div>
+  <div class="small-0 medium-1 columns">&nbsp</div>
+</div>
+
+<script type="text/babel">
+  var Article = React.createClass({
+    render: function() {
+      var content = [];
+      this.props.body.forEach(function (line) {
+        content.push(<p>{line}</p>);
+      }.bind(this));
+      return (
+        <div>
+        <h1>{this.props.title}</h1>
+        <h4>{this.props.date}</h4>
+        <br/>
+        {content}
+        </div>
+      );
+    }
+  });
+
+  var ErrorMessage = React.createClass({
+    render: function() {
+      return (
+        <div>
+        <h3>Error: Article not found</h3>
+        <p>The article you requested could not be retrieved. Sorry!</p>
+        </div>
+      );
+    }
+  });
+
+  var Container = React.createClass({
+    render: function() {
+      var urlId = location.search.substr(1).split("=");
+      var chosenArticle = [];
+      var error = [];
+      error.push(<ErrorMessage />);
+      this.props.data.forEach(function (article) {
+        if (article.key == urlId[1]) {
+          chosenArticle.push(<Article title={article.title} date={article.date} body={article.body} />);
+          error = [];
+        }
+      }.bind(this));
+
+      return (
+        <div>
+        {chosenArticle}
+        {error}
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <Container data={articles} />,
+    document.getElementById('article')
+  );
+</script>

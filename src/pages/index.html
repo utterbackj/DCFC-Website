@@ -1,3 +1,6 @@
+---
+layout: index
+---
 <!-- Facebook Plugin Script -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -10,7 +13,7 @@
 
 <!-- Sticky/Top bar -->
 <div data-sticky-container>
-  <div data-sticky data-margin-top='0' style="width:100%">
+  <div data-sticky data-margin-top='0' style="width:100%" data-options="stickyOn:small">
     <!-- Color borders -->
     <div style="border-top: 6px solid green;">
       <div style="border-bottom: 2px solid gray;">
@@ -80,16 +83,18 @@
     <div class="callout">
       <h3 class="text-center"><b>Latest News</b></h3>
     </div>
+    <br>
+    <div id="articles"></div>
   </div>
 
-  <div class="small-12 large-pull-9 large-3 columns text-center">
+  <div class="small-12 large-pull-9 large-3 columns text-center" style="overflow:hidden">
     <br>
     <br>
     <div class="callout">
       <h3><b>Social Media</b></h3>
     </div>
     <!-- Facebook - Update with latest post -->
-    <div class="fb-post" data-href="https://www.facebook.com/Dartmouth.Fencing/posts/1082237725189258:0" data-width="350" data-show-text="true"><blockquote cite="https://www.facebook.com/Dartmouth.Fencing/posts/1082237725189258:0" class="fb-xfbml-parse-ignore"><p>Congratulations to Ellie Ng &#039;19 and Kaleigh Mentzer &#039;18 for their recognition at the Recreational Sports...</p>Posted by <a href="https://www.facebook.com/Dartmouth.Fencing/">Dartmouth College Fencing Club</a> on&nbsp;<a href="https://www.facebook.com/Dartmouth.Fencing/posts/1082237725189258:0">Tuesday, May 31, 2016</a></blockquote></div>
+    <div class="fb-post" data-href="https://www.facebook.com/Dartmouth.Fencing/posts/1082237725189258:0" data-width="330" data-show-text="true"><blockquote cite="https://www.facebook.com/Dartmouth.Fencing/posts/1082237725189258:0" class="fb-xfbml-parse-ignore"><p>Congratulations to Ellie Ng &#039;19 and Kaleigh Mentzer &#039;18 for their recognition at the Recreational Sports...</p>Posted by <a href="https://www.facebook.com/Dartmouth.Fencing/">Dartmouth College Fencing Club</a> on&nbsp;<a href="https://www.facebook.com/Dartmouth.Fencing/posts/1082237725189258:0">Tuesday, May 31, 2016</a></blockquote></div>
     <!-- End of Facebook html, don't replace past here -->
     <br>
     <br>
@@ -100,3 +105,50 @@
   </div>
 
 </div> 
+
+<script type="text/babel">
+  var Summary = React.createClass({
+    render: function() {
+      return (
+        <div>
+          <div className="row">
+            <div className="small-12 medium-8 columns">
+              <h4><strong>{this.props.title}</strong></h4>
+              <h5>{this.props.date}</h5>
+            </div>
+            <div className="small-12 medium-4 columns text-right">
+              <br/>
+              <a href={"article.html?id=" + this.props.id} className="button">Read More</a>
+            </div>
+          </div>
+          <br/>
+        </div>
+      );
+    }
+  });
+
+  var Container = React.createClass({
+    render: function() {
+      var articles = [];
+      var count = 0;
+      this.props.data.forEach(function (article) {
+        count++;
+        if (count > 3) {
+          return;
+        }
+        articles.push(<Summary title={article.title} date={article.date} summary={article.summary} id={article.key}/>);
+      }.bind(this));
+
+      return (
+        <div className="callout">
+        {articles}
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <Container data={articles} />,
+    document.getElementById('articles')
+  );
+</script>
