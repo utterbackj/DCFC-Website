@@ -37,15 +37,15 @@ var roster = [
 	},
 	{
 		"name": "Annie Yang",
-		"picture": "yanga.png",
+		"picture": "yanga.jpg",
 		"weapon": "Epee",
 		"gender": "female",
 		"year": "2017",
-		"major": "CONTACT",
-		"hobbies": "",
-		"funfact": "",
+		"major": "Biology; Psychology minor ",
+		"hobbies": "Research, Is a DOSC, Instagramming food",
+		"funfact": " I was literally almost kidnapped/scammed during my sophomore fall, but saved by Adam '15. Thanks Adam :-)",
 		"squadleader": true,
-		"active": false
+		"active": true
 	},
 	{
 		"name": "Caleb G. Caldwell",
@@ -93,7 +93,7 @@ var roster = [
 		"hobbies": "Equestrian, Cricket, Theatrical Stage Management, Chillin' at Alpha Theta",
 		"funfact": "I have been punched by a kangaroo.",
 		"squadleader": false,
-		"active": true
+		"active": false
 	},
 	{
 		"name": "Bronwyn Lloyd",
@@ -213,7 +213,7 @@ var roster = [
 		"hobbies": "Volunteering with DREAM, member of KSA",
 		"funfact": "I sprained my ankle jumping off the roof of my house.",
 		"squadleader": false,
-		"active": true
+		"active": false
 	},
 	{
 		"name": "Michelle Dundek",
@@ -301,7 +301,7 @@ var roster = [
 	},
 	{
 		"name": "Jerrel L. Catlett",
-		"picture": "catlettj.png",
+		"picture": "catlettj.jpg",
 		"weapon": "Sabre",
 		"gender": "male",
 		"year": "2018",
@@ -321,7 +321,7 @@ var roster = [
 		"hobbies": "",
 		"funfact": "",
 		"squadleader": false,
-		"active": true
+		"active": false
 	},
 	{
 		"name": "Kaleigh Mentzer",
@@ -369,7 +369,7 @@ var roster = [
 		"hobbies": "Tennis, Art, Hiking, Skiing, Traveling, CCNL Research, GIS, DCGH",
 		"funfact": "In my childhood, I was my neighborhood's undefeated lighsaber duel champion.",
 		"squadleader": false,
-		"active": true
+		"active": false
 	},
 	{
 		"name": "Ellie Ng",
@@ -432,6 +432,18 @@ var roster = [
 		"active": true
 	},
 	{
+		"name": "Ian Ali",
+		"picture": "alii.png",
+		"weapon": "Epee",
+		"gender": "male",
+		"year": "2019",
+		"major": "Undecided",
+		"hobbies": "MAV, EE Just, College Freethinkers Club",
+		"funfact": "I met Bill Clinton.",
+		"squadleader": false,
+		"active": true
+	},
+	{
 		"name": "Dan Bonitto",
 		"picture": "bonittod.jpg",
 		"weapon": "Sabre",
@@ -441,7 +453,7 @@ var roster = [
 		"hobbies": "Jogging, Cycling, Swimming, Drawing, Reading",
 		"funfact": "I speak five languages.",
 		"squadleader": false,
-		"active": true
+		"active": false
 	},
 	{
 		"name": "Brandon Holmes",
@@ -453,7 +465,7 @@ var roster = [
 		"hobbies": "Divest Dartmouth, Ledyard Canoe Club, Cabin and Trail, Dartmouth Humanitarian Engineers, Tennis, Theater, Hanging out with friends",
 		"funfact": "In 10th grade my friend and I rode our bicycles and circumvented Washington DC. The trip was about 30 miles.",
 		"squadleader": false,
-		"active": true
+		"active": false
 	},
 	{
 		"name": "William Wolfe-McGuire",
@@ -477,6 +489,6 @@ var roster = [
 		"hobbies": "Reading, Photography",
 		"funfact": "I identify as Garfield.",
 		"squadleader": false,
-		"active": true
+		"active": false
 	}
 ]

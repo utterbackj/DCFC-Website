@@ -7,9 +7,24 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DCFC</title>
+    <title>Dartmouth College Fencing Club</title>
     <link rel="shortcut icon" href="assets/img/dcfc-favicon.ico">
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
+    <style>
+    .title-bar {    
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+
+    .top-bar {
+      display: none;
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+    }
+    </style>
   </head>
   <body>
 

@@ -3,7 +3,7 @@ layout: news
 ---
 <!-- Sticky/Top bar -->
 <div data-sticky-container>
-  <div data-sticky data-margin-top='0' style="width:100%" data-options="stickyOn:small">
+  <div data-sticky data-margin-top='0.1' style="width:100%" data-options="stickyOn:small">
     <!-- Color borders -->
     <div style="border-top: 6px solid green;">
       <div style="border-bottom: 2px solid gray;">
@@ -19,7 +19,7 @@ layout: news
           <!-- Title -->
           <div class="show-for-medium">
           <ul class="top-bar-title">
-            <a href="#"><img src="assets/img/dcfc_logo_small.png"/></a>
+            <a href="index.html"><img src="assets/img/dcfc_logo_small.png"/></a>
           </ul>
           </div>
           <!-- Menu Items -->
@@ -64,7 +64,7 @@ layout: news
         <div className="callout">
           <div className="row">
             <div className="small-12 medium-10 columns">
-              <h3><strong>{this.props.title}</strong></h3>
+              <h3><strong><a href={"article.html?id=" + this.props.id}>{this.props.title}</a></strong></h3>
               <h4>{this.props.date}</h4>
               <h4>{this.props.summary}</h4>
             </div>
