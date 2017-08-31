@@ -37,3 +37,35 @@ Go to https://github.com/utterbackj/DCFC-Website and hit the button that says cl
 - Hit the button that says "push origin". This syncs the online repository with your local one.
 
 Repeat from step 4 - 7 whenever you want to update the site. Make sure you hit the fetch origin button if any changes have been made to the site since you last worked on it.
+
+# Making changes:
+
+There are certain things you'll want to keep an eye on in order to keep the site up to date.
+
+## Homepage:
+
+- Open the file src/pages/index.html
+- Facebook: Whenever a new post is made on our facebook, click the 3 dots on the upper right of the post and click the "embed" option and then click "advanced options". Change the pixel width to 350 and then hit the "Get Code" button. Copy everything in step 3 and paste it in the section of index.html between "\<!-- Facebook - Update with latest post -->" and "\<!-- End of Facebook html, don't replace past here -->"
+- Instagram: On a post, click the 3 dots on the bottom right and hit the "embed" option. Then click the button that says "copy embed code" and paste that between the instagram comments right underneath the facebook embedded post. Make sure you don't choose the same topic for both the Facebook and Instagram post (happens often when we go to competitions or someone gets an award or something), this looks bad. A nice alternative is using the most recent facebook and second most recent Instagram post (it's ok if the new instagram post was the old facebook post, as long as the same post isn't on both at the same time).
+- Don't worry about the article headers, that'll update automatically when you edit the json file
+- You may want to keep the intro up to date with our latest accomplishments and/or selling points to the team
+
+## Roster:
+
+- Update captains and officers manually by editing the src/pages/roster.html file.
+- For the rest of the page, you need to update the assets/roster/roster_data.js file (and add/remove pictures to the assets/img/roster folder). Follow the same format for new entries, and when you need to update the roster for a new class year, delete all the entries until the first one is the current seniors. The json is sorted by class year (oldest to youngest) so add new entries to the bottom for freshmen or with the rest of their class for upperclassmen. If someone quits or stops showing up, just change the inactive variable to true; this makes it easy if they rejoin to just change it back and they'll be back in the roster. Make sure you spell/capitalize all categories the same way they're spelled in the rest of the entries or the filters will break.
+- For images, any dimension is fine as long as it's square. Image type can be either png or jpg, just make sure you add the right file extension to the json file when typing in the file name.
+
+## Articles:
+
+- Articles should be done entirely in the assets/articles/article_data.js file. Key should be the next number up (doesn't really matter as long as it's unique, so if you delete an article don't worry about changing the keys for subsequent articles). The "body" field is an array of paragraphs; each paragraph should be in quotes and separated by a comma like "paragraph one", "paragraph two".
+- Add articles to the top of the file; newest should be above oldest.
+- If you want any additional functionality (like attaching a picture to the article) let me know and I'll implement that for you.
+
+## Competitions:
+
+- This is a static page, just make sure to keep it updated when competitions are announced and after we get results from each of them.
+
+## Other pages:
+
+- The rest of the pages are all static and don't need frequent updates, just make sure to check in like once or twice a year and update the text and images with newer info so that it doesn't get too outdated (some of them reference some pretty old stuff already, so this is something you want to do when starting to update the site).
